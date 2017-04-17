@@ -1,0 +1,24 @@
+-- | Specification for the exercises of Chapter 02.
+
+module Chapter02Spec where
+
+import           Chapter02       (myInit, myInit', myLast, myLast')
+import           Test.Hspec      (Spec, describe, it)
+import           Test.QuickCheck
+
+checkLastDef :: ([Int] -> Int) -> Property
+checkLastDef lastImpl = property $ \xs -> lastImpl xs == last xs
+
+checkInitDef :: ([Int] -> [Int]) -> Property
+checkInitDef initImpl = property $ \xs -> initImpl xs == init xs
+
+spec :: Spec
+spec = do
+  describe "myLast" $ do
+    it "correctly implements last" $ checkLastDef myLast
+  describe "myLast'" $ do
+    it "correctly implements last" $ checkLastDef myLast'
+  describe "myInit" $ do
+    it "correctly implements init" $ checkInitDef myInit
+  describe "myInit'" $ do
+    it "correctly implements init" $ checkInitDef myInit'
