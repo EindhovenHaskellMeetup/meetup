@@ -7,7 +7,7 @@ import           Test.Hspec      (Spec, describe, it)
 import           Test.QuickCheck
 
 checkLastDef :: ([Int] -> Int) -> Property
-checkLastDef lastImpl = property $ \xs -> lastImpl xs == last xs
+checkLastDef lastImpl = property $ \xs -> not (null xs) ==> lastImpl xs == last xs
 
 checkInitDef :: ([Int] -> [Int]) -> Property
 checkInitDef initImpl = property $ \xs -> initImpl xs == init xs
