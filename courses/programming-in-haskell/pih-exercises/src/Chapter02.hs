@@ -13,25 +13,25 @@ where
 -- TODO: Define it using some of the functions seen on Chapter 2: 'head',
 -- 'tail', 'nth', 'take', 'drop', 'length', 'sum', 'product', 'reverse'.
 myLast :: [a] -> a
-myLast = undefined
+myLast = head . reverse
 
 -- | Selects the last element of a list. Alternative version.
 --
 -- TODO: give an alternative definition, using only the functions described
 -- above.
 myLast' :: [a] -> a
-myLast' = undefined
+myLast' xs = xs !! (length xs - 1)
 
 -- | Remove the last element of a list.
 --
 -- TODO: define the function using only any combination of: 'head', 'tail',
 -- 'nth', 'take', 'drop', 'length', 'sum', 'product', 'reverse'.
 myInit  :: [a] -> [a]
-myInit = undefined
+myInit = reverse . tail . reverse
 
 -- | Remove the last element of a list. Alternative version.
 --
 -- TODO: give an alternative definition, using only the functions described
 -- above.
 myInit' :: [a] -> [a]
-myInit' = undefined
+myInit' xs = take (length xs - 1) xs
