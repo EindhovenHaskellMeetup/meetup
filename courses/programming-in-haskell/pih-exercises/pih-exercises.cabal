@@ -2,7 +2,7 @@ name:                pih-exercises
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/pih-exercises#readme
+homepage:            https://github.com/EindhovenHaskellMeetup/meetup/blob/master/courses/programming-in-haskell/pih-exercises/README.md
 license:             BSD3
 license-file:        LICENSE
 author:              The Eindhoven Haskell Meetup team
@@ -41,4 +41,4 @@ test-suite pih-exercises-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/pih-exercises
+  location: https://github.com/EindhovenHaskellMeetup/meetup/tree/master/courses/programming-in-haskell/pih-exercises
