@@ -46,7 +46,7 @@ book
 - Install [stack](https://docs.haskellstack.org/en/stable/README/).
 - Clone the exercises:
 ```sh
-git clone git@github.com:EindhovenHaskellMeetup/meetup.git
+git clone https://github.com/EindhovenHaskellMeetup/meetup.git
 ```
 - Go to the exercises folder:
 ```sh
