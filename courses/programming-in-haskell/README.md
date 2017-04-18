@@ -26,7 +26,7 @@ book
     - In person meetings.
 - Discuss/make questions during:
     - In person meetings.
-    - [Gitter channel](https://gitter.im/EindhovenHaskellMeetup).
+    - [Gitter channel](https://gitter.im/EindhovenHaskellMeetup/course-programming-in-haskell).
 
 ## Roadmap
 
@@ -66,7 +66,11 @@ stack test
 
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - [Plugin](https://marketplace.visualstudio.com/items?itemName=Vans.haskero).
-
+  To use intero, go to the exercises folder (`pih-exercises`) and run:
+  ```sh
+  stack build intero
+  ```
+  
 # Additional information
 
 ## On Haskell
