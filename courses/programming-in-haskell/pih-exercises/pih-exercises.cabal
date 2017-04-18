@@ -16,6 +16,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Chapter02
+                     , Chapter03
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -32,6 +33,7 @@ test-suite pih-exercises-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   other-modules:       Chapter02Spec
+                     , Chapter03Spec
   build-depends:       base
                      , pih-exercises
                      , hspec
