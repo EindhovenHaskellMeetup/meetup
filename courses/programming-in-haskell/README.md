@@ -46,8 +46,13 @@ book
 - Install [stack](https://docs.haskellstack.org/en/stable/README/).
 - Clone the exercises:
 ```sh
-git clone ...
+git clone git@github.com:EindhovenHaskellMeetup/meetup.git
 ```
+- Go to the exercises folder:
+```sh
+cd courses/programming-in-haskell/pih-exercises
+```
+
 - Setup stack:
 ```sh
 stack setup
