@@ -36,7 +36,7 @@ book
 
 ## Contact
 
-- carlos ???
+- carlos.rodriguez.vega.c@philips.com
 - damian.nadales@gmail.com
 
 # Tooling
@@ -44,6 +44,18 @@ book
 ## Stack
 
 - Install [stack](https://docs.haskellstack.org/en/stable/README/).
+- Clone the exercises:
+```sh
+git clone ...
+```
+- Setup stack:
+```sh
+stack setup
+```
+- Run the tests for the exercises!
+```sh
+stack test
+```
 
 ## Visual Studio Code
 
