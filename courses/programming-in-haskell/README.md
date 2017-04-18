@@ -26,7 +26,7 @@ book
     - In person meetings.
 - Discuss/make questions during:
     - In person meetings.
-    - [Gitter channel](https://gitter.im/EindhovenHaskellMeetup).
+    - [Gitter channel](https://gitter.im/EindhovenHaskellMeetup/course-programming-in-haskell).
 
 ## Roadmap
 
@@ -36,7 +36,7 @@ book
 
 ## Contact
 
-- carlos ???
+- carlos.rodriguez.vega.c@philips.com
 - damian.nadales@gmail.com
 
 # Tooling
@@ -44,12 +44,33 @@ book
 ## Stack
 
 - Install [stack](https://docs.haskellstack.org/en/stable/README/).
+- Clone the exercises:
+```sh
+git clone https://github.com/EindhovenHaskellMeetup/meetup.git
+```
+- Go to the exercises folder:
+```sh
+cd courses/programming-in-haskell/pih-exercises
+```
+
+- Setup stack:
+```sh
+stack setup
+```
+- Run the tests for the exercises!
+```sh
+stack test
+```
 
 ## Visual Studio Code
 
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - [Plugin](https://marketplace.visualstudio.com/items?itemName=Vans.haskero).
-
+  To use intero, go to the exercises folder (`pih-exercises`) and run:
+  ```sh
+  stack build intero
+  ```
+  
 # Additional information
 
 ## On Haskell
