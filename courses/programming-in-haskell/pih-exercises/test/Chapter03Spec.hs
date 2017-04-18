@@ -21,8 +21,8 @@ spec = do
       xs2 `shouldBe` [(False,'0'),(True,'1')]
 
     it "implements xs3" $ property $ \xs ->
-          (xs3 !! 0) xs === tail (xs :: [Int])
-      .&. (xs3 !! 1) xs === init xs
+          (not (null xs) ==> (xs3 !! 0) xs === tail (xs :: [Int]))
+      .&. (not (null xs) ==> (xs3 !! 1) xs === init xs)
       .&. (xs3 !! 2) xs === reverse xs
 
     it "implements t0" $ do
