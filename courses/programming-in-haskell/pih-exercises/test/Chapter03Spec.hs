@@ -1,9 +1,9 @@
-{-# ScopedTypeVariables #-}
 -- | Specification for the exercises of Chapter 03.
 
 module Chapter03Spec where
 
-import           Chapter03       (t0, t1, xs0, xs1, xs2, xs3)
+import           Chapter03       (double, pair, palindrome, second, swap, t0,
+                                  t1, twice, xs0, xs1, xs2, xs3)
 import           Test.Hspec      (Spec, describe, it, shouldBe)
 import           Test.QuickCheck (Property, property, (.&.), (===), (==>))
 
@@ -31,3 +31,23 @@ spec = do
     it "implements t1" $ do
       t1 `shouldBe` ([False,True],['0','1'])
 
+  describe "Exercise 2" $ do
+
+    it "implements function second" $ property $ \xs ->
+      1 < length xs ==> second xs === (head (tail xs) :: [String])
+
+    it "implements function swap" $ property $ \x y ->
+      swap (x, y) === ((y, x) :: ([Bool], String))
+
+    it "implements function pair" $ property $ \x y ->
+      pair x y === ((x, y) :: (Char, Int))
+
+    it "implements function double" $ property $ \x ->
+      double x === 2.0 * (x :: Double)
+
+    it "implements function palindrome" $ property $ \xs ->
+      palindrome xs === (reverse xs == (xs :: [Int]))
+
+    it "implements function twice" $ do
+      twice (+3) 8 `shouldBe` (8 + 3 + 3)
+      twice (++" bar") "foo" `shouldBe` "foo bar bar"
