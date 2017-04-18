@@ -10,16 +10,21 @@ xs0 = [0, 1]
 -- Define the values below and give them types.
 
 -- | TODO: define as @['a','b','c']@
-xs1 = undefined
+xs1 :: [Char]
+xs1 = ['a','b','c']
 
 -- | TODO: define as @('a','b','c')@
-t0 = undefined
+t0 :: (Char, Char, Char)
+t0 = ('a','b','c')
 
 -- | TODO: define as @[(False,'0'),(True,'1')]@
-xs2 = undefined
+xs2 :: [(Bool, Char)]
+xs2 = [(False,'0'),(True,'1')]
 
 -- | TODO: define as @([False,True],['0','1'])@
-t1 = undefined
+t1 :: ([Bool], [Char])
+t1 = ([False,True],['0','1'])
 
 -- | TODO: define as @[tail,init,reverse]@
-xs3 = undefined
+xs3 :: [[a] -> [a]]
+xs3 = [tail,init,reverse]
