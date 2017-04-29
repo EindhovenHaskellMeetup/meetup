@@ -1,6 +1,6 @@
 -- | Exercises for chapter 4.
 
-module Chapter03 (
+module Chapter04 (
   safetail, safetail', safetail'', or', or'', or''', and', and''
   ) where
 
