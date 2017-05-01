@@ -17,6 +17,7 @@ library
   hs-source-dirs:      src
   exposed-modules:     Chapter02
                      , Chapter03
+                     , Chapter04
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -34,6 +35,7 @@ test-suite pih-exercises-test
   main-is:             Spec.hs
   other-modules:       Chapter02Spec
                      , Chapter03Spec
+                     , Chapter04Spec
   build-depends:       base
                      , pih-exercises
                      , hspec
