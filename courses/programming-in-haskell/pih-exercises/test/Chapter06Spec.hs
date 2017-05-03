@@ -14,7 +14,7 @@ checkEquivalence :: (Arbitrary a, Show a, Show b, Eq b)
                  => Proxy a -> (a -> b) -> (a -> b) -> Property
 checkEquivalence _ f g = property $ \x -> f x === g x
 
-newtype IncreasingList a = IL [a] deriving (Eq, Show)
+newtype IncreasingList a = IL { incList :: [a] } deriving (Eq, Show)
 
 newtype NonEmptyList a = NEL { list :: [a] } deriving (Eq, Show)
 
@@ -32,6 +32,8 @@ checkIndex i = checkEquivalence (Proxy :: Proxy (NonEmptyList Double))
                (apply (!!) i) (apply (C6.!!) i)
   where apply f j (NEL xs) = f xs j'
           where j' = (abs j) `min` (length xs - 1)
+
+type TwoIncreasingLists = (IncreasingList Double, IncreasingList Double)
 
 spec :: Spec
 spec = do
@@ -54,8 +56,9 @@ spec = do
   describe "Exercise 2" $ do
 
     it "merge returns a sorted list" $
-      checkEquivalence (Proxy :: Proxy ([Double], [Double]))
-      (uncurry C6.merge) (\(xs, ys) -> sort (xs ++ ys))
+      checkEquivalence (Proxy :: Proxy TwoIncreasingLists)
+      (\(xs, ys) ->  C6.merge (incList xs) (incList ys))
+      (\(xs, ys) -> sort (incList xs ++ incList ys))
 
   describe "Exercise 3" $ do
 
