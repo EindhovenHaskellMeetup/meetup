@@ -10,8 +10,9 @@ import           Test.Hspec      (Spec, describe, it, shouldBe)
 import           Test.QuickCheck (Arbitrary (..), Property, property, (.&.),
                                   (===), (==>))
 
-checkEquivalence :: Arbitrary a => Proxy a -> (a -> b) -> (a -> b) -> Property
-checkEquivalence = undefined
+checkEquivalence :: (Arbitrary a, Show a, Show b, Eq b)
+                 => Proxy a -> (a -> b) -> (a -> b) -> Property
+checkEquivalence _ f g = property $ \x -> f x === g x
 
 newtype IncreasingList a = IL [a] deriving (Eq, Show)
 
