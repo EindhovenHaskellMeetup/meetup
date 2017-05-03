@@ -16,8 +16,22 @@ checkEquivalence _ f g = property $ \x -> f x === g x
 
 newtype IncreasingList a = IL [a] deriving (Eq, Show)
 
+newtype NonEmptyList a = NEL { list :: [a] } deriving (Eq, Show)
+
 instance (Ord a, Arbitrary a) => Arbitrary (IncreasingList a) where
   arbitrary = IL . sort <$> arbitrary
+
+instance (Arbitrary a) => Arbitrary (NonEmptyList a) where
+  arbitrary = do
+    x <- arbitrary
+    xs <- arbitrary
+    return $ NEL (x:xs)
+
+checkIndex :: Int -> Property
+checkIndex i = checkEquivalence (Proxy :: Proxy (NonEmptyList Double))
+               (apply (!!) i) (apply (C6.!!) i)
+  where apply f j (NEL xs) = f xs j'
+          where j' = (abs j) `min` (length xs - 1)
 
 spec :: Spec
 spec = do
@@ -32,8 +46,7 @@ spec = do
     it "implements replicate" $ property $ \i ->
       checkEquivalence (Proxy :: Proxy Char) (replicate i) (C6.replicate i)
 
-    it "implements !!" $ property $ \i ->
-      checkEquivalence (Proxy :: Proxy [Double]) (!! i) (C6.!! i)
+    it "implements !!" $ property $ checkIndex
 
     it "implements elem" $ property $ \str ->
       checkEquivalence (Proxy :: Proxy [String]) (str `elem`) (str `C6.elem`)
