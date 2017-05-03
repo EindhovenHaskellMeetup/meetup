@@ -37,6 +37,7 @@ test-suite pih-exercises-test
   other-modules:       Chapter02Spec
                      , Chapter03Spec
                      , Chapter04Spec
+                     , Chapter05Spec
   build-depends:       base
                      , pih-exercises
                      , hspec
