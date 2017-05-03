@@ -7,10 +7,12 @@ import           Test.Hspec      (Spec, describe, it)
 import           Test.QuickCheck (Property, property, (==>))
 
 checkLastDef :: ([Int] -> Int) -> Property
-checkLastDef lastImpl = property $ \xs -> not (null xs) ==> lastImpl xs == last xs
+checkLastDef lastImpl = property $ \xs -> not (null xs)
+  ==> lastImpl xs == last xs
 
 checkInitDef :: ([Int] -> [Int]) -> Property
-checkInitDef initImpl = property $ \xs -> not (null xs) ==> initImpl xs == init xs
+checkInitDef initImpl =
+  property $ \xs -> not (null xs) ==> initImpl xs == init xs
 
 spec :: Spec
 spec = do
