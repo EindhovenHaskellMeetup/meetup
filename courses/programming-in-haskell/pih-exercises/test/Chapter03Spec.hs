@@ -1,4 +1,4 @@
--- | Specification for the exercises of Chapter 03.
+-- | Specification for the exercises of Chapter 3.
 
 module Chapter03Spec where
 
