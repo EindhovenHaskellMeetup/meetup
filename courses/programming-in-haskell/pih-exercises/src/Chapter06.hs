@@ -15,8 +15,8 @@ concat [] = []
 concat (xs:xxs) = xs ++ concat xxs
 
 replicate :: Int -> a -> [a]
-replicate n x | n == 0 = []
-               | n > 0 = x:(replicate (n-1) x)
+replicate n x | n <= 0 = []
+              | n > 0 = x:(replicate (n-1) x)
 
 (!!) :: [a] -> Int -> a
 (x:xs) !! n

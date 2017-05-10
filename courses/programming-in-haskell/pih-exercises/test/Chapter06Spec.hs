@@ -40,9 +40,10 @@ spec = do
 
     describe "produces a list with n identical elements" $ do
 
-        it "returns empty list for n = 0" $ do
+        it "returns empty list for n < 0" $ do
           C6.replicate 0 True `shouldBe` []
           C6.replicate 0 'a' `shouldBe` []
+          C6.replicate (-10::Int) True `shouldBe` []
 
         it "returns a list with 1 element for n = 1" $ do
           C6.replicate 1 13 `shouldBe` [13]
