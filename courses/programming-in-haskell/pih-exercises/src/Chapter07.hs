@@ -5,7 +5,7 @@ module Chapter07 (comprehension, map') where
 -- * Exercise 1
 
 answer::[Char]
-answer = "curried functioins"
+answer = "curried functions"
 
 -- * Exercise 2
 

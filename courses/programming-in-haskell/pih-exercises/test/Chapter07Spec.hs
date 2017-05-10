@@ -8,7 +8,7 @@ spec = do
   describe "Exercise 1: What are higher-order functions that return functions as results better known as?" $ do
 
     it "has the correct answer" $ do
-      answer `shouldBe` ""
+      answer `shouldBe` "curried functions"
 
   describe "Exercise 2: Express the comprehension [f x | x <- xs, p x] using map and filter" $ do
 
