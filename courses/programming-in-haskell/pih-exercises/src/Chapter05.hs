@@ -11,5 +11,5 @@ perfects :: Int -> [Int]
 perfects = undefined
 
 -- * Exercise 3
-scalarproduct :: [Int] -> [Int] -> [Int]
+scalarproduct :: [Int] -> [Int] -> Int
 scalarproduct = undefined

@@ -23,7 +23,7 @@ spec = do
   describe "Exercise 3: scalar product" $ do
 
     it "yields the scalar product of 2 lists" $ do
-      scalarproduct [] [] `shouldBe` []
-      scalarproduct [1,2,3] [4,5,6] `shouldBe` [4,10,18]
-      scalarproduct [1,2,3,4,5,6] [4,5,6] `shouldBe` [4,10,18]
-      scalarproduct [1,2,3] [4,5,6,1,2,3] `shouldBe` [4,10,18]
+      scalarproduct [] [] `shouldBe` 0
+      scalarproduct [1,2,3] [4,5,6] `shouldBe` 32
+      scalarproduct [1,2,3,4,5,6] [4,5,6] `shouldBe` 32
+      scalarproduct [1,2,3] [4,5,6,1,2,3] `shouldBe` 32
