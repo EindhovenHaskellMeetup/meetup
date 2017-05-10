@@ -19,9 +19,9 @@ replicate n x | n == 0 = []
                | n > 0 = x:(replicate (n-1) x)
 
 (!!) :: [a] -> Int -> a
-(!!) (x:xs) n
+(x:xs) !! n
     | n == 0 = x
-    | n > 0 = (!!) xs (n-1)
+    | n > 0 =  xs !! (n-1)
 
 elem :: Eq a => a -> [a] -> Bool
 elem x [] = False

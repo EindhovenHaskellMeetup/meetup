@@ -54,10 +54,10 @@ spec = do
     describe "selects the nth element of a list" $ do
 
         it "returns the element if n=0 and there is only one element" $ do
-          (C6.!!) ['a'] 0 `shouldBe` 'a'
+           ['a'] C6.!! 0 `shouldBe` 'a'
 
         it "returns the element if nth element" $ do
-          (C6.!!) "abcd" 2 `shouldBe` 'c'
+          "abcd" C6.!! 2 `shouldBe` 'c'
 
     describe "decides if an element is in a list" $ do
 
