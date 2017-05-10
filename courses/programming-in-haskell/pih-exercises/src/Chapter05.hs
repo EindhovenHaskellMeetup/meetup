@@ -11,5 +11,6 @@ perfects :: Int -> [Int]
 perfects n = [ m | m <- [1..n], sum [f | f <- [1..m-1], m `mod` f == 0] == m]
 
 -- * Exercise 3
-scalarproduct :: [Int] -> [Int] -> [Int]
-scalarproduct xs ys = [ m*n | (m,n) <- zip xs ys]
+scalarproduct :: [Int] -> [Int] -> Int
+scalarproduct xs ys = sum [ m*n | (m,n) <- zip xs ys]
+
