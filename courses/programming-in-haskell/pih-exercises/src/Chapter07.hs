@@ -20,4 +20,4 @@ filter' :: ((a -> Bool) -> [a] -> [a])
 filter' p = foldr (\x ys -> if p x then x:ys else ys) []
 
 filter'' :: ((a -> Bool) -> [a] -> [a])
-filter'' p = foldr (++) . \x -> [ x | p x]) []
+filter'' p = foldr ((++) . \x -> [ x | p x]) []
