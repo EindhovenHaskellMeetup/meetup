@@ -1,45 +1,43 @@
--- | Exercises for Chapter 6.
---
--- Implement the functions in this module using recursion.
+-- | Exercises for chapter 5.
 
-module Chapter06 (and, concat, replicate, elem, (!!), merge, msort) where
+module Chapter06 (and, concat, replicate, (!!), elem, merge, msort) where
 
-import           Prelude hiding (and, concat, elem, replicate, (!!))
+import Prelude hiding (and, concat, elem, replicate, (!!))
 
 -- * Exercise 1
-
--- | Decide if all logical values in a list are true.
 and :: [Bool] -> Bool
-and = undefined
+and [] = True
+and (False:xs) = False
+and (True:xs) = and xs
 
--- | Concatenate a list of lists.
 concat :: [[a]] -> [a]
-concat = undefined
+concat [] = []
+concat (xs:xxs) = xs ++ concat xxs
 
--- | Produce a list with identical @n@ elements.
 replicate :: Int -> a -> [a]
-replicate = undefined
+replicate n x | n <= 0 = []
+              | n > 0 = x:(replicate (n-1) x)
 
--- | Select the nth element of a list.
 (!!) :: [a] -> Int -> a
-xs !! n = undefined
--- Note that you can also define @!!@ using prefix notation:
---
--- > (!!) xs n = ...
+(x:xs) !! n
+    | n == 0 = x
+    | n > 0 =  xs !! (n-1)
 
--- | Decide if a value is an element of a list.
 elem :: Eq a => a -> [a] -> Bool
-elem = undefined
+elem x [] = False
+elem x (y:xs) = (x == y) || (elem x xs)
 
 -- * Exercise 2
-
--- | Merges two sorted lists of values to give a single sorted list. If any of
--- the two given lists are not sorted then the behavior is undefined.
 merge :: Ord a => [a] -> [a] -> [a]
--- Remember to define @merge@ using recursion.
-merge = undefined
+merge xs [] = xs
+merge [] xs = xs
+merge (x:xs) (y:ys) | x < y = x:(merge xs (y:ys))
+                    | otherwise = y:(merge (x:xs) ys)
 
--- * Exercise 3
 msort :: Ord a => [a] -> [a]
-msort = undefined
-
+msort [] = []
+msort [x] = [x]
+msort (xs) = merge (msort ys) (msort zs) where
+                h = length xs `div` 2
+                ys = take h xs
+                zs = drop h xs
