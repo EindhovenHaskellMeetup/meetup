@@ -20,6 +20,7 @@ library
                      , Chapter04
                      , Chapter05
                      , Chapter06
+                     , Chapter07
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -40,6 +41,7 @@ test-suite pih-exercises-test
                      , Chapter04Spec
                      , Chapter05Spec
                      , Chapter06Spec
+                     , Chapter07Spec
   build-depends:       base
                      , pih-exercises
                      , hspec
