@@ -1,6 +1,6 @@
 module Chapter07Spec where
 
-import Chapter07 (comprehension, map')
+import Chapter07 (answer, comprehension, map', filter', filter'')
 import Test.Hspec (Spec, describe, it, shouldBe)
 
 spec :: Spec
@@ -24,3 +24,14 @@ spec = do
 
         it "applies f to each element in the list " $ do
             map' (*2) [1,2,3,4] `shouldBe` [2,4,6,8]
+
+      describe "filter p" $ do
+
+        it "returns empty list for empty list" $ do
+            filter' (>4) [] `shouldBe` []
+            filter'' (>4) [] `shouldBe` []
+
+        it "returns only elements matching the predicate in the same order" $ do
+            filter' (>4) [1,5,2,6,3,7,8] `shouldBe` [5,6,7,8]
+            filter'' (>4) [1,5,2,6,3,7,8] `shouldBe` [5,6,7,8]
+
