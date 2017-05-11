@@ -12,7 +12,10 @@ spec = do
 
   describe "Exercise 2: Express the comprehension [f x | x <- xs, p x] using map and filter" $ do
 
-      it "returns the empty list if both lists are empty" $ do
+      it "returns the empty list if the lists is empty" $ do
+          comprehension (*2) (>4) [] `shouldBe` []
+
+      it "returns the comprehension results" $ do
           comprehension (*2) (>4) [1,2,3,4,5,6,7,8] `shouldBe` [10,12,14,16]
 
   describe "Exercise 3: Redefine map f and filter p using foldr" $ do
