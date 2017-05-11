@@ -1,5 +1,3 @@
--- | Specification for the exercises of Chapter 04.
-
 module Chapter04Spec where
 
 import           Chapter04       (safetail, safetail', safetail'', or', or'', or''', and', and'')

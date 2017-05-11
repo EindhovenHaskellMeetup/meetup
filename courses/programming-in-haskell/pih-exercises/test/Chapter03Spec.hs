@@ -1,5 +1,3 @@
--- | Specification for the exercises of Chapter 3.
-
 module Chapter03Spec where
 
 import           Chapter03       (double, pair, palindrome, second, swap, t0,

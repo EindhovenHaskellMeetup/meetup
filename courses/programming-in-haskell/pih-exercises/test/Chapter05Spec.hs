@@ -1,5 +1,3 @@
--- | Specification for the exercises of Chapter 04.
-
 module Chapter05Spec where
 
 import           Chapter05  (perfects, pyths, scalarproduct)
