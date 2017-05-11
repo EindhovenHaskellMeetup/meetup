@@ -1,5 +1,3 @@
--- | Specification for the exercises of Chapter 6.
-
 module Chapter06Spec where
 
 import qualified Chapter06       as C6

@@ -1,5 +1,3 @@
--- | Specification for the exercises of Chapter 2.
-
 module Chapter02Spec where
 
 import           Chapter02       (myInit, myInit', myLast, myLast')
