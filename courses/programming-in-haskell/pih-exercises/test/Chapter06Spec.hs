@@ -31,7 +31,6 @@ checkIndex i = checkEquivalence (Proxy :: Proxy (NonEmptyList Double))
   where apply f j (NEL xs) = f xs j'
           where j' = (abs j) `min` (length xs - 1)
 
-
 type TwoIncreasingLists = (IncreasingList Double, IncreasingList Double)
 
 spec :: Spec
