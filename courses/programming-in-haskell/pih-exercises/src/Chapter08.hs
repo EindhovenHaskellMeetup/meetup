@@ -16,7 +16,7 @@ data Expr = Val Int
           | Add Expr Expr
           | Mul Expr Expr
 
-folde :: (Int -> a) -> (a -> a-> a) -> (a -> a -> a) -> (Expr -> a)
+folde :: (Int -> a) -> (a -> a-> a) -> (a -> a -> a) -> Expr -> a
 folde valFn _ _ (Val n) = valFn n
 folde valFn addFn mulFn (Add e1 e2) = addFn f1 f2 where
                                         f1 = folde valFn addFn mulFn e1
