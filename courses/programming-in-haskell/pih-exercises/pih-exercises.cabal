@@ -45,6 +45,7 @@ test-suite pih-exercises-test
                      , Chapter06Spec
                      , Chapter07Spec
                      , Chapter08Spec
+                     , Chapter09Spec
   build-depends:       base
                      , pih-exercises
                      , hspec
