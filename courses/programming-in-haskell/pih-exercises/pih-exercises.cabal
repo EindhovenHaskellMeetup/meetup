@@ -26,6 +26,14 @@ library
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
+benchmark chapter9-bench
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   src, bench
+  main-is:          Chapter09Bench.hs
+  build-depends:    base >= 4.7 && < 5
+                  , criterion
+  default-language: Haskell2010  
+  
 executable pih-exercises
   hs-source-dirs:      app
   main-is:             Main.hs

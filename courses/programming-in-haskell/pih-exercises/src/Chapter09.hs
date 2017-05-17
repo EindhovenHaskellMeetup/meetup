@@ -1,6 +1,7 @@
 -- |
 
-module Chapter09 (choices, choices', eval, Expr (..), Op (..), perms, split) where
+module Chapter09 ( choices, choices', eval, Expr (..), Op (..), perms, split
+                 , solutions) where
 
 -- * Arithmetic operators
 
@@ -31,7 +32,7 @@ data Expr = Val Int | App Op Expr Expr
 
 instance Show Expr where
   show (Val x) = show x
-  show (App op x y) = brak x ++ show op ++ brak y
+  show (App op x y) = brak x ++ " " ++ show op ++ " " ++ brak y
     where brak (Val y) = show y
           brak e       = "(" ++ show e ++ ")"
 
@@ -76,8 +77,11 @@ solution :: Expr -> [Int] -> Int -> Bool
 solution e xs t = eval e == [t] && values e `elem` choices xs
 
 -- * Brute force solution
-solutions :: [Int] -> Int -> Expr
-solutions = undefined
+solutions :: [Int] -> Int -> [Expr]
+solutions xs t = [expr | ys <- choices xs
+                       , expr <- exprs ys
+                       , solution expr ys t
+                       ]
 
 -- | Get all the possibilities for splitting a list into two non-empty lists.
 split :: [a] -> [([a], [a])]
@@ -89,7 +93,13 @@ split (x:xs) = [([x], xs)]
 -- | Get all possible expressions that can be constructed with the given list
 -- of integers.
 exprs :: [Int] -> [Expr]
-exprs = undefined
+exprs [x] = [Val x]
+exprs xs = [App op x y | op <- [Add, Sub, Mul, Div]
+                       , (ys, zs) <- split xs
+                       , x <- exprs ys
+                       , y <- exprs zs]
+
+-- * Combining generation and evaluation
 
 -- * Exercise done in class
 
