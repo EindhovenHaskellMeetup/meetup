@@ -1,7 +1,7 @@
 -- |
 
 module Chapter09 ( choices, choices', eval, Expr (..), Op (..), perms, split
-                 , solutions) where
+                 , solutions, solutions', solutions'') where
 
 -- * Arithmetic operators
 
@@ -93,6 +93,7 @@ split (x:xs) = [([x], xs)]
 -- | Get all possible expressions that can be constructed with the given list
 -- of integers.
 exprs :: [Int] -> [Expr]
+exprs [] = []
 exprs [x] = [Val x]
 exprs xs = [App op x y | op <- [Add, Sub, Mul, Div]
                        , (ys, zs) <- split xs
@@ -101,13 +102,75 @@ exprs xs = [App op x y | op <- [Add, Sub, Mul, Div]
 
 -- * Combining generation and evaluation
 
+type Result = (Expr, Int)
+
+results :: [Int] -> [Result]
+results []  = []
+results [x] = [(Val x, x) | 0 < x]
+results xs = [(App op y z, apply op ry rz) | op <- [Add, Sub, Mul, Div]
+                                           , (ys, zs) <- split xs
+                                           , (y, ry) <- results ys
+                                           , (z, rz) <- results zs
+                                           , valid op ry rz
+                                           ]
+
+solutions' :: [Int] -> Int -> [Expr]
+solutions' xs t = [expr | ys <- choices xs, (expr, res) <- results ys, res == t]
+
+-- * Exploiting algebraic properties
+valid' :: Op -> Int -> Int -> Bool
+valid' Add x y = x <= y
+valid' Sub x y = y < x
+valid' Mul x y = x /= 1 && y /= 1 && x <= y
+valid' Div x y = y /= 1 && x `mod` y == 0
+
+results' :: [Int] -> [Result]
+results' []  = []
+results' [x] = [(Val x, x) | 0 < x]
+results' xs = [(App op y z, apply op ry rz) | op <- [Add, Sub, Mul, Div]
+                                           , (ys, zs) <- split xs
+                                           , (y, ry) <- results' ys
+                                           , (z, rz) <- results' zs
+                                           , valid' op ry rz
+                                           ]
+
+solutions'' :: [Int] -> Int -> [Expr]
+solutions'' xs t = [expr | ys <- choices xs, (expr, res) <- results ys, res == t]
+
+-- * Exercises
+
+-- | Redefine the combinatorial function @choices@ using a list comprehension
+-- rather than using @composition@, @map@ and @concat@.
+choices' :: [a] -> [[a]]
+choices' = undefined
+
+-- | Define a recursive function @isChoice@ that decides if one list is chosen
+-- from another without using the combinatorial functions @perms@ and @subs@.
+isChoice :: Eq a => [a] -> [a] -> Bool
+isChoice = undefined
+
+-- | Define a function that count the number of expressions.
+nrExpr :: [Int] -> Int
+nrExpr = undefined
+
+-- | Define a function that count the number of valid expressions.
+nrValidExpr :: [Int] -> Int
+nrValidExpr = undefined
+
+-- | Modify the @solutions@ program to:
+--
+-- a. produce the nearest solution if no exact solution is possible;
+-- b. order the solutions using a suitable measurement of complexity.
+solutionsAprox :: [Int] -> Int -> [Expr]
+solutionsAprox = undefined
+
 -- * Exercise done in class
 
 -- | The implementation of @choices@ as discussed on today's session. It needs
 -- to be tidied up, and optimized.
-choices' :: [a] -> [[a]]
-choices' [] = [[]]
-choices' (x:xs) = ys ++ alternates x ys
+choices'' :: [a] -> [[a]]
+choices'' [] = [[]]
+choices'' (x:xs) = ys ++ alternates x ys
   where ys = choices' xs
 
 alternates :: a -> [[a]] -> [[a]]
