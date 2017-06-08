@@ -24,6 +24,7 @@ library
                      , Chapter08
                      , Chapter09
   build-depends:       base >= 4.7 && < 5
+                     , deepseq
   ghc-options:         -O2  
   default-language:    Haskell2010
 
@@ -35,6 +36,7 @@ benchmark chapter9-bench
                   , criterion
                   , clock
                   , formatting
+                  , deepseq
   other-modules:    Chapter09                  
   ghc-options:      -O2
   default-language: Haskell2010  

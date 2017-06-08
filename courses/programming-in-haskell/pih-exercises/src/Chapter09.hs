@@ -1,12 +1,21 @@
+{-# LANGUAGE DeriveGeneric #-}
 -- |
 
 module Chapter09 ( choices, choices', eval, Expr (..), Op (..), perms, split
                  , solutions, solutions', solutions'') where
 
+-- The following two imports are needed for deriving a NFData instance for
+-- Expr.
+import           Control.DeepSeq
+import           GHC.Generics    (Generic)
+--
+
 -- * Arithmetic operators
 
 -- | The four arithmetic operations allowed in the game.
-data Op = Add | Sub | Mul | Div
+data Op = Add | Sub | Mul | Div deriving (Generic)
+
+instance NFData Op
 
 instance Show Op where
   show Add = "+"
@@ -28,7 +37,9 @@ apply Div = div
 
 -- * Numeric expressions
 
-data Expr = Val Int | App Op Expr Expr
+data Expr = Val Int | App Op Expr Expr deriving (Generic)
+
+instance NFData Expr
 
 instance Show Expr where
   show (Val x) = show x
