@@ -1,16 +1,22 @@
 module Chapter08 (Nat(..), mult, Expr(..), folde, Tree(..), complete) where
 
 data Nat = Zero
-         | Succ Nat deriving (Show, Eq)
+         | Succ Nat deriving (Eq)
+
+instance Show Nat where
+  -- show :: Nat -> String
+  show Zero     = "0"
+  show (Succ n) = "TODO"
 
 add :: Nat -> Nat -> Nat
-add Zero n = n
+add Zero n     = n
 add (Succ m) n = Succ(add m n)
 
 mult :: Nat -> Nat -> Nat
-mult Zero n = Zero
+mult Zero n     = Zero
 mult (Succ m) n = add (mult m n) n
 
+myExp = (Val 6) `Add` (Val 8)
 
 data Expr = Val Int
           | Add Expr Expr
@@ -42,3 +48,43 @@ f (Node tl l tr)
         where
         fl = f tl
         fr = f tr -- TODO: how to evaluate this only when fl == 0?
+
+
+replicate' :: Nat -> a -> [a]
+replicate' Zero _     = []
+replicate' (Succ n) x = x:(replicate' n x)
+
+replicate'' :: Nat -> a -> [a]
+replicate'' 0 _ = []
+replicate'' n x = x:(replicate'' (n - 1) x)
+
+
+instance Num Nat where
+  (+) = add
+  -- (+) :: Nat -> Nat -> Nat
+  -- Zero + n = n
+  -- Succ m + n = Succ (m + n)
+  -- Succ m :: Nat
+  -- n :: Nat
+  -- m :: Nat
+
+  -- (*) :: Nat -> Nat -> Nat
+  (*) = mult
+
+  Succ n - Succ m = n - m
+  n - Zero = n
+  Zero - _ = undefined
+
+  --abs, signum, fromInteger, (negate
+  abs n = n
+
+  signum Zero = 0
+  signum _    = 1
+
+  -- fromInteger :: Integer -> Num
+  fromInteger n
+    | n == 0 = Zero
+    | 0 < n  = Succ (fromInteger (n - 1))
+
+  negate n = undefined
+
