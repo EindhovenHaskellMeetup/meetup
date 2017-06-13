@@ -146,7 +146,7 @@ results' xs = [(App op y z, apply op ry rz) | op <- [Add, Sub, Mul, Div]
                                            ]
 
 solutions'' :: [Int] -> Int -> [Expr]
-solutions'' xs t = [expr | ys <- choices xs, (expr, res) <- results ys, res == t]
+solutions'' xs t = [expr | ys <- choices xs, (expr, res) <- results' ys, res == t]
 
 -- * Exercises
 

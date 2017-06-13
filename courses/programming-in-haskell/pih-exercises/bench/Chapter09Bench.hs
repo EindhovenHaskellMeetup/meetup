@@ -21,7 +21,7 @@ refTarget = 765
 main :: IO ()
 main = do
   criterionBench
-  simpleBench
+  --simpleBench
   where criterionBench =
           defaultMain [
             bgroup "solutions"
